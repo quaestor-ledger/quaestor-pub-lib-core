@@ -1,0 +1,26 @@
+{
+  "name": "@quaestor-ledger/pub-lib-core-workspace",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Verification workspace for Quaestor's public, transport-neutral client primitives.",
+  "scripts": {
+    "generate": "node scripts/generate-typespec.mjs && node scripts/authority-agreement.mjs",
+    "check": "node scripts/generate-typespec.mjs --check && node scripts/authority-agreement.mjs --check && CARGO_TARGET_DIR=target/public-boundary cargo run --quiet --locked --manifest-path tools/public-boundary/Cargo.toml",
+    "test:contracts": "node --test scripts/*.test.mjs",
+    "test:typescript": "tsc -p typescript/tsconfig.json && node --test typescript/test/*.test.mjs",
+    "test:rust": "cargo fmt --check && CARGO_TARGET_DIR=target/public-core cargo test --locked && CARGO_TARGET_DIR=target/public-core cargo clippy --all-targets --locked -- -D warnings",
+    "test:dart": "cd dart && dart format --output=none --set-exit-if-changed lib test && dart analyze && dart run test/conformance.dart",
+    "test:boundary": "cargo fmt --manifest-path tools/public-boundary/Cargo.toml --check && CARGO_TARGET_DIR=target/public-boundary cargo test --locked --manifest-path tools/public-boundary/Cargo.toml && CARGO_TARGET_DIR=target/public-boundary cargo clippy --locked --manifest-path tools/public-boundary/Cargo.toml --all-targets -- -D warnings",
+    "test": "npm run test:contracts && npm run test:typescript && npm run test:rust && npm run test:dart && npm run test:boundary && npm run check"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "devDependencies": {
+    "@typespec/compiler": "1.15.0",
+    "@typespec/json-schema": "1.15.0",
+    "ajv": "8.20.0",
+    "typescript": "7.0.2"
+  }
+}

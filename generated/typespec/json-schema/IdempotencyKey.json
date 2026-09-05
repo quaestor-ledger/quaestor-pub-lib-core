@@ -1,0 +1,24 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$id": "IdempotencyKey.json",
+    "type": "object",
+    "properties": {
+        "key": {
+            "$ref": "RetryToken.json"
+        },
+        "mintedAtMs": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 9007199254740991,
+            "description": "Unix epoch milliseconds within the exactly portable JSON integer range."
+        }
+    },
+    "required": [
+        "key",
+        "mintedAtMs"
+    ],
+    "unevaluatedProperties": {
+        "not": {}
+    },
+    "description": "Client-minted retry identity. It conveys no authorization or permission."
+}

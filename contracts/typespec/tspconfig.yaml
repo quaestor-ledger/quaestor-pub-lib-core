@@ -1,0 +1,13 @@
+kind: project
+entrypoint: main.tsp
+warn-as-error: true
+output-dir: "{project-root}/../../generated/typespec"
+emit:
+  - "@typespec/json-schema"
+options:
+  "@typespec/json-schema":
+    emitter-output-dir: "{output-dir}/json-schema"
+    emitAllModels: true
+    file-type: json
+    int64-strategy: number
+    seal-object-schemas: true

@@ -1,0 +1,171 @@
+{
+  "contract": "quaestor.pub-lib-core.v1",
+  "authorities": {
+    "jsonSchema": {
+      "path": "contracts/json-schema/public-core.schema.json",
+      "sha256": "1079b1081d81ae05eb6acb1cca34c5f2f01516886d10806518467a05b0547f23"
+    },
+    "typeSpec": {
+      "path": "contracts/typespec/main.tsp",
+      "sha256": "506a71288bc29e385d36947c5e6ab811a2476c9d313581ac3e00d8a14c38ae7b"
+    }
+  },
+  "emittedTypeSpecSha256": {
+    "AppVersion.json": "ee217e271ae3763d62d89d9fe15bdd58089b3f1ba6b88a8f3ee29df772d77e36",
+    "ClientInfo.json": "1cb7c08d95a00b924d412630cd2c52c36f8e40c665a5fd2504b2404d95d2b81d",
+    "ClientPlatform.json": "0f113a479bdda50e22e7422f34f84207f69a78e71af2abdf87e76349faef27f2",
+    "IdempotencyKey.json": "bc0c5f064c6f4f1e36190d4f374e213c90b5ad8326ee61a165d46f6ef435aded",
+    "InstallId.json": "7f9ff2919e049c13933eee55efd249a63a57f06a3e16ce14889257f2c6bb54fc",
+    "LocaleHint.json": "aa34bb434ac2da6784b75d5edfa7319ba006543f332ac68d9f0935193ab132f0",
+    "RetryToken.json": "1ab73bf4ae67e4caf478a8e54f4068168ede7986d5b793a25452f435bdb496c8"
+  },
+  "compared": [
+    "ClientPlatform",
+    "ClientInfo",
+    "IdempotencyKey"
+  ],
+  "normalized": {
+    "ClientPlatform": {
+      "jsonSchema": {
+        "type": "string",
+        "enum": [
+          "android",
+          "browser",
+          "desktop",
+          "ios"
+        ]
+      },
+      "typeSpec": {
+        "type": "string",
+        "enum": [
+          "android",
+          "browser",
+          "desktop",
+          "ios"
+        ]
+      }
+    },
+    "ClientInfo": {
+      "jsonSchema": {
+        "type": "object",
+        "closed": true,
+        "required": [
+          "appVersion",
+          "installId",
+          "platform"
+        ],
+        "properties": {
+          "appVersion": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 64,
+            "pattern": "^[!-~]+$"
+          },
+          "installId": {
+            "type": "string",
+            "minLength": 16,
+            "maxLength": 128,
+            "pattern": "^[A-Za-z0-9_-]+$"
+          },
+          "locale": {
+            "type": "string",
+            "minLength": 2,
+            "maxLength": 35,
+            "pattern": "^[A-Za-z]{2,3}(?:-[A-Za-z0-9]{2,8})*$"
+          },
+          "platform": {
+            "type": "string",
+            "enum": [
+              "android",
+              "browser",
+              "desktop",
+              "ios"
+            ]
+          }
+        }
+      },
+      "typeSpec": {
+        "type": "object",
+        "closed": true,
+        "required": [
+          "appVersion",
+          "installId",
+          "platform"
+        ],
+        "properties": {
+          "appVersion": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 64,
+            "pattern": "^[!-~]+$"
+          },
+          "installId": {
+            "type": "string",
+            "minLength": 16,
+            "maxLength": 128,
+            "pattern": "^[A-Za-z0-9_-]+$"
+          },
+          "locale": {
+            "type": "string",
+            "minLength": 2,
+            "maxLength": 35,
+            "pattern": "^[A-Za-z]{2,3}(?:-[A-Za-z0-9]{2,8})*$"
+          },
+          "platform": {
+            "type": "string",
+            "enum": [
+              "android",
+              "browser",
+              "desktop",
+              "ios"
+            ]
+          }
+        }
+      }
+    },
+    "IdempotencyKey": {
+      "jsonSchema": {
+        "type": "object",
+        "closed": true,
+        "required": [
+          "key",
+          "mintedAtMs"
+        ],
+        "properties": {
+          "key": {
+            "type": "string",
+            "minLength": 16,
+            "maxLength": 128,
+            "pattern": "^[A-Za-z0-9_-]+$"
+          },
+          "mintedAtMs": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 9007199254740991
+          }
+        }
+      },
+      "typeSpec": {
+        "type": "object",
+        "closed": true,
+        "required": [
+          "key",
+          "mintedAtMs"
+        ],
+        "properties": {
+          "key": {
+            "type": "string",
+            "minLength": 16,
+            "maxLength": 128,
+            "pattern": "^[A-Za-z0-9_-]+$"
+          },
+          "mintedAtMs": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 9007199254740991
+          }
+        }
+      }
+    }
+  }
+}
