@@ -1,0 +1,9 @@
+name: quaestor_pub_lib_core
+version: 0.1.0
+publish_to: none
+description: Public, transport-neutral Quaestor client primitives for untrusted devices.
+repository: https://github.com/quaestor-ledger/quaestor-pub-lib-core
+issue_tracker: https://github.com/quaestor-ledger/quaestor-pub-lib-core/issues
+
+environment:
+  sdk: ">=3.3.0 <4.0.0"

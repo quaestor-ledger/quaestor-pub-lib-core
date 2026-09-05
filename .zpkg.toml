@@ -1,0 +1,63 @@
+[package]
+org = "quaestor-ledger"
+name = "quaestor-pub-lib-core"
+kind = "pub-lib-core"
+version = "0.1.0"
+description = "Public, transport-neutral Quaestor client primitives with cross-runtime conformance"
+license = "MIT"
+keywords = ["ledger", "client", "contracts", "idempotency"]
+
+[package.repository]
+vcs = "git"
+url = "https://github.com/quaestor-ledger/quaestor-pub-lib-core"
+
+[install]
+dir = ".vendor/.zed"
+
+[targets.repository]
+dir = "."
+
+[targets.rust]
+dir = "."
+adapter = "rust"
+
+[targets.typescript]
+dir = "typescript"
+name = "quaestor-pub-lib-core-typescript"
+adapter = "node"
+
+[targets.dart]
+dir = "dart"
+adapter = "dart"
+
+[targets.contracts]
+dir = "contracts"
+name = "quaestor-pub-lib-core-contracts"
+adapter = "none"
+
+[publish]
+include_readme = true
+tag_format = "v{version}"
+exclude = [
+  ".env",
+  ".env.*",
+  ".ores/**",
+  ".direnv/**",
+  ".vendor/.zed/**",
+  ".zed/**",
+  ".zed-pack/**",
+  "node_modules/**",
+  "**/node_modules/**",
+  "target/**",
+  "dart/.dart_tool/**",
+  "dart/build/**",
+  "dart/pubspec.lock",
+  "typescript/dist/**",
+  "tools/**/target/**",
+  "**/*.log",
+  ".DS_Store",
+]
+
+[scripts]
+test = "npm ci --ignore-scripts && npm test"
+boundary = "cargo run --quiet --locked --manifest-path tools/public-boundary/Cargo.toml"

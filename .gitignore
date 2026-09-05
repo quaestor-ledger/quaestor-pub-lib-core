@@ -1,0 +1,12 @@
+.DS_Store
+.dart_tool/
+.ores/
+node_modules/
+target/
+dart/.dart_tool/
+dart/build/
+dart/pubspec.lock
+typescript/dist/
+.env
+.env.*
+!.env.example

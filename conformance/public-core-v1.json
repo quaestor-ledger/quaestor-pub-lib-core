@@ -1,0 +1,112 @@
+{
+  "contractVersion": "quaestor.pub-lib-core.v1",
+  "valid": {
+    "clientInfo": [
+      {
+        "platform": "browser",
+        "appVersion": "1.4.0",
+        "locale": "en-US",
+        "installId": "browser_install_01"
+      },
+      {
+        "platform": "android",
+        "appVersion": "2026.09.5+42",
+        "installId": "android-install-00000042"
+      }
+    ],
+    "idempotencyKey": [
+      {
+        "key": "01J6ZJ3QGX7K9Y6Y0WQWVBM7VQ",
+        "mintedAtMs": 1788624000000
+      },
+      {
+        "key": "retry_key_000000",
+        "mintedAtMs": 9007199254740991
+      }
+    ]
+  },
+  "invalid": {
+    "clientInfo": [
+      {
+        "case": "unknown platform",
+        "value": {
+          "platform": "server",
+          "appVersion": "1.0.0",
+          "installId": "browser_install_01"
+        }
+      },
+      {
+        "case": "short installation id",
+        "value": {
+          "platform": "ios",
+          "appVersion": "1.0.0",
+          "installId": "too-short"
+        }
+      },
+      {
+        "case": "control character in app version",
+        "value": {
+          "platform": "desktop",
+          "appVersion": "1.0\nmalformed",
+          "installId": "desktop_install_01"
+        }
+      },
+      {
+        "case": "malformed locale",
+        "value": {
+          "platform": "browser",
+          "appVersion": "1.0.0",
+          "locale": "en_US",
+          "installId": "browser_install_01"
+        }
+      },
+      {
+        "case": "unknown field",
+        "value": {
+          "platform": "browser",
+          "appVersion": "1.0.0",
+          "installId": "browser_install_01",
+          "role": "owner"
+        }
+      }
+    ],
+    "idempotencyKey": [
+      {
+        "case": "short retry key",
+        "value": {
+          "key": "short",
+          "mintedAtMs": 1788624000000
+        }
+      },
+      {
+        "case": "negative time",
+        "value": {
+          "key": "retry_key_000000",
+          "mintedAtMs": -1
+        }
+      },
+      {
+        "case": "fractional time",
+        "value": {
+          "key": "retry_key_000000",
+          "mintedAtMs": 1788624000000.5
+        }
+      },
+      {
+        "case": "non-portable time",
+        "value": {
+          "key": "retry_key_000000",
+          "mintedAtMs": 9007199254740992
+        }
+      },
+      {
+        "case": "unknown field",
+        "value": {
+          "key": "retry_key_000000",
+          "mintedAtMs": 1788624000000,
+          "scope": "organization"
+        }
+      }
+    ]
+  }
+}

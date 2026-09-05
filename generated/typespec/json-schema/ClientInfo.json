@@ -1,0 +1,28 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$id": "ClientInfo.json",
+    "type": "object",
+    "properties": {
+        "platform": {
+            "$ref": "ClientPlatform.json"
+        },
+        "appVersion": {
+            "$ref": "AppVersion.json"
+        },
+        "locale": {
+            "$ref": "LocaleHint.json"
+        },
+        "installId": {
+            "$ref": "InstallId.json"
+        }
+    },
+    "required": [
+        "platform",
+        "appVersion",
+        "installId"
+    ],
+    "unevaluatedProperties": {
+        "not": {}
+    },
+    "description": "Bounded metadata supplied by an untrusted client installation."
+}

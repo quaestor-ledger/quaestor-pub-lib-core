@@ -1,0 +1,54 @@
+name: ci
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: public-core-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  contract-and-runtime-conformance:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version: 22
+          cache: npm
+
+      - uses: dtolnay/rust-toolchain@4be7066ada62dd38de10e7b70166bc74ed198c30 # stable
+        with:
+          components: clippy,rustfmt
+
+      - uses: dart-lang/setup-dart@7654d458321ee25acccccfdb86cd48bd95768ff1 # v1.8.0
+        with:
+          sdk: stable
+
+      - name: Install pinned contract toolchain
+        run: npm ci --ignore-scripts
+
+      - name: Resolve dependency-free Dart package
+        working-directory: dart
+        run: dart pub get
+
+      - name: Verify authorities, runtimes, and publication boundary
+        run: npm test
+
+      - name: Verify deterministic regeneration
+        run: |
+          npm run generate
+          git diff --exit-code
+
+      - name: Verify the Rust publication contains only its allowlist
+        run: |
+          cargo package --locked --list | tee /tmp/quaestor-cargo-package-files.txt
+          test "$(wc -l < /tmp/quaestor-cargo-package-files.txt)" -eq 8
+          cargo package --locked
