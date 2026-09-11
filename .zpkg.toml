@@ -11,6 +11,9 @@ keywords = ["ledger", "client", "contracts", "idempotency"]
 vcs = "git"
 url = "https://github.com/quaestor-ledger/quaestor-pub-lib-core"
 
+[dependencies]
+"oresoftware/ores-dnd" = "^0.1.0"
+
 [install]
 dir = ".vendor/.zed"
 
