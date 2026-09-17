@@ -1,0 +1,7 @@
+{
+  "schema_version": 1,
+  "repository": "https://github.com/ORESoftware/ores-interfaces.git",
+  "rev": "a23288f8a9d6c3ca181c9f0d70839e00f22248f5",
+  "role": "shared cross-language contract authority",
+  "consumer": "quaestor-pub-lib-core"
+}
