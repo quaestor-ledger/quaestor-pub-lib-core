@@ -20,6 +20,7 @@ const PUBLISH_ROOTS: &[&str] = &[
 const ALLOWED_FILES: &[&str] = &[
     "conformance/public-core-v1.json",
     "contracts/json-schema/public-core.schema.json",
+    "contracts/ores-interfaces.pin.json",
     "contracts/typespec/main.tsp",
     "contracts/typespec/tspconfig.yaml",
     "dart/lib/quaestor_pub_lib_core.dart",
