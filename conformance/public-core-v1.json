@@ -68,6 +68,15 @@
           "installId": "browser_install_01",
           "role": "owner"
         }
+      },
+      {
+        "case": "explicit null locale is not absence",
+        "value": {
+          "platform": "browser",
+          "appVersion": "1.0.0",
+          "locale": null,
+          "installId": "browser_install_01"
+        }
       }
     ],
     "idempotencyKey": [
