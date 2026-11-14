@@ -61,7 +61,7 @@ final class ClientInfo {
       platform: ClientPlatform.parse(value['platform']),
       appVersion:
           _string(value['appVersion'], 'invalid_app_version', 'appVersion'),
-      locale: value['locale'] == null
+      locale: !value.containsKey('locale')
           ? null
           : _string(value['locale'], 'invalid_locale', 'locale'),
       installId: _string(value['installId'], 'invalid_install_id', 'installId'),
