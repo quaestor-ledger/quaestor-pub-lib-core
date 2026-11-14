@@ -62,6 +62,7 @@ pub struct ClientInfo {
     platform: ClientPlatform,
     app_version: String,
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(default, deserialize_with = "deserialize_non_null_locale")]
     locale: Option<String>,
     install_id: String,
 }
@@ -131,6 +132,15 @@ struct RawClientInfo {
     app_version: String,
     locale: Option<String>,
     install_id: String,
+}
+
+// An absent locale is optional, but explicit JSON null is invalid according
+// to the independently authored contract and the TypeScript parser.
+fn deserialize_non_null_locale<'de, D>(deserializer: D) -> Result<Option<String>, D::Error>
+where
+    D: Deserializer<'de>,
+{
+    String::deserialize(deserializer).map(Some)
 }
 
 impl<'de> Deserialize<'de> for ClientInfo {
