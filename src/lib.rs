@@ -62,7 +62,6 @@ pub struct ClientInfo {
     platform: ClientPlatform,
     app_version: String,
     #[serde(skip_serializing_if = "Option::is_none")]
-    #[serde(default, deserialize_with = "deserialize_non_null_locale")]
     locale: Option<String>,
     install_id: String,
 }
@@ -130,6 +129,7 @@ impl ClientInfo {
 struct RawClientInfo {
     platform: ClientPlatform,
     app_version: String,
+    #[serde(default, deserialize_with = "deserialize_non_null_locale")]
     locale: Option<String>,
     install_id: String,
 }
