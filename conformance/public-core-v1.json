@@ -12,6 +12,18 @@
         "platform": "android",
         "appVersion": "2026.09.5+42",
         "installId": "android-install-00000042"
+      },
+      {
+        "platform": "ios",
+        "appVersion": "1",
+        "locale": "en",
+        "installId": "aaaaaaaaaaaaaaaa"
+      },
+      {
+        "platform": "desktop",
+        "appVersion": "vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv",
+        "locale": "eng-ABCDEFGH-ABCDEFGH-ABCDEFGH-ABCD",
+        "installId": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
       }
     ],
     "idempotencyKey": [
@@ -22,6 +34,14 @@
       {
         "key": "retry_key_000000",
         "mintedAtMs": 9007199254740991
+      },
+      {
+        "key": "aaaaaaaaaaaaaaaa",
+        "mintedAtMs": 0
+      },
+      {
+        "key": "ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ",
+        "mintedAtMs": 1
       }
     ]
   },
@@ -68,6 +88,39 @@
           "installId": "browser_install_01",
           "role": "owner"
         }
+      },
+      {
+        "case": "empty app version",
+        "value": {
+          "platform": "desktop",
+          "appVersion": "",
+          "installId": "aaaaaaaaaaaaaaaa"
+        }
+      },
+      {
+        "case": "app version above maximum length",
+        "value": {
+          "platform": "desktop",
+          "appVersion": "vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv",
+          "installId": "aaaaaaaaaaaaaaaa"
+        }
+      },
+      {
+        "case": "installation id above maximum length",
+        "value": {
+          "platform": "desktop",
+          "appVersion": "1.0",
+          "installId": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+        }
+      },
+      {
+        "case": "locale above maximum length",
+        "value": {
+          "platform": "desktop",
+          "appVersion": "1.0",
+          "locale": "eng-ABCDEFGH-ABCDEFGH-ABCDEFGH-ABCDE",
+          "installId": "aaaaaaaaaaaaaaaa"
+        }
       }
     ],
     "idempotencyKey": [
@@ -105,6 +158,13 @@
           "key": "retry_key_000000",
           "mintedAtMs": 1788624000000,
           "scope": "organization"
+        }
+      },
+      {
+        "case": "retry key above maximum length",
+        "value": {
+          "key": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "mintedAtMs": 0
         }
       }
     ]
